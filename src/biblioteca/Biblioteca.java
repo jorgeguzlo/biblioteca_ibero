@@ -5,18 +5,23 @@ import javax.swing.JOptionPane;
 import biblioteca.GestionUsuarios;
 import biblioteca.GestionLibros;
 
-        
+
 public class Biblioteca {
 
     public static void main(String[] args) {
         System.out.println("====¡Bienvenid@ a la biblioteca Ibero!====");
             Scanner entrada = new Scanner(System.in);
+
             GestionUsuarios usuario = new GestionUsuarios();
+            GestionLibros libro = new GestionLibros();
+
             int opcion = -1;
             while (opcion!=0) {
                 System.out.println("1. Gestion de Usuario");
                 System.out.println("2. Gestion de libros libros");
                 System.out.println("3. Gestión de prestamos de libros");
+                System.out.println("4. Buscar libro");
+                System.out.println("5. Devolver libro");
                 System.out.println("0. Salir");
                 try {
                     
@@ -38,6 +43,14 @@ public class Biblioteca {
                             System.out.println("Gestión de prestamos de libros");
                             // OBTENER LIBRO, HISTORIAL, DEVOLUVIONES
                             break;
+                        case 4:
+                            System.out.println("Buscar libro");
+                            libro.buscarLibro();
+                            break;
+                        case 5:
+                            System.out.println("Devolver libro");
+                            libro.devolverLibro();
+                            break;
                         case 0:                      
                             if (opcion==0){
                             System.out.println("Saliendo del sistema...");
@@ -48,8 +61,7 @@ public class Biblioteca {
                         default:
                             throw new AssertionError();
                     }
-            
-            
+
                 } catch (Exception e) {
                     System.out.println("Opcion invalida, por favor intente nuevamente");
                     entrada.next();
