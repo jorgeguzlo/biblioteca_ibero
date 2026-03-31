@@ -5,57 +5,29 @@ import javax.swing.JOptionPane;
 import biblioteca.GestionUsuarios;
 import biblioteca.GestionLibros;
 
-        
 public class Biblioteca {
 
     public static void main(String[] args) {
         System.out.println("====¡Bienvenid@ a la biblioteca Ibero!====");
-            Scanner entrada = new Scanner(System.in);
-            GestionUsuarios usuario = new GestionUsuarios();
-            int opcion = -1;
-            while (opcion!=0) {
-                System.out.println("1. Gestion de Usuario");
-                System.out.println("2. Gestion de libros libros");
-                System.out.println("3. Gestión de prestamos de libros");
-                System.out.println("0. Salir");
-                try {
-                    
-                    System.out.print("Seleccione una opcion: ");
-                    opcion = entrada.nextInt();
-                    entrada.nextLine();
+        showTable ventana = new showTable();
 
-                    switch (opcion) {
-                        case 1:
-                            System.out.println("Gestión de usuarios");
-                            usuario.mostrarTodos();// CREAR, BUSCAR, ELIMINAR
-                            
-                            break;
-                        case 2: 
-                            System.out.println("Gestión de libros");
-                            // CREAR, BUSCAR, ELIMINAR5555555
-                            break;
-                        case 3: 
-                            System.out.println("Gestión de prestamos de libros");
-                            // OBTENER LIBRO, HISTORIAL, DEVOLUVIONES
-                            break;
-                        case 0:                      
-                            if (opcion==0){
-                            System.out.println("Saliendo del sistema...");
-                            }else{
-                            System.out.println("digite 0 para salir");
-                            }
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-            
-            
-                } catch (Exception e) {
-                    System.out.println("Opcion invalida, por favor intente nuevamente");
-                    entrada.next();
-                }
-        }
-        
+        // Ejemplo 1: Mostrar Libros
+        String[] colsLibros = {"ISBN", "Título", "Autor"};
+        Object[][] datosLibros = {
+            {"123-ABC", "El Quijote", "Cervantes"},
+            {"456-DEF", "Cien Años de Soledad", "García Márquez"}
+        };
+
+        // Ejemplo 2: Mostrar Usuarios (Si quisieras reusarla)
+        String[] colsUsuarios = {"User ID", "Nombre"};
+        Object[][] datosUsuarios = {
+            {"001", "Juan Pérez"},
+            {"002", "María López"}
+        };
+
+        // Llamamos al método con los datos que queramos en ese momento
+        ventana.showDataTable(colsLibros, datosLibros);
+
     }
-    
+
 }
